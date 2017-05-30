@@ -24,7 +24,7 @@ namespace GUIapp
 
     public void Draw(DrawVisitor visitor)
     {
-      
+            visitor.DrawLabel(this);
     }
     public void Update(UpdateVisitor visitor, float dt) { }
 
@@ -38,7 +38,15 @@ namespace GUIapp
     public Color color;
     public Label label;
     public Point top_left_corner;
-    public Button(string text, Point top_left_corner, int size, Color color, float width, float height, Action action) 
+        private string v1;
+        private int v2;
+        private int v3;
+        private Color red;
+        private double v4;
+        private double v5;
+        private string v6;
+
+        public Button(string text, Point top_left_corner, int size, Color color, float width, float height, Action action) 
     {
       this.action = action;
       this.width = width;
@@ -47,9 +55,10 @@ namespace GUIapp
       this.top_left_corner = top_left_corner;
       label = new Label(text, top_left_corner, size, color);
     }
-    public void Draw(DrawVisitor visitor)
+
+        public void Draw(DrawVisitor visitor)
     {
-      //MISSING CODE HERE
+            visitor.DrawButton(this);
     }
     public bool is_intersecting(Point point)
     {
@@ -71,8 +80,8 @@ namespace GUIapp
     public GuiManager(System.Action exit)
     {
       elements = new List<GuiElement>();
-      elements.Add(new Label("Hi Ahmed!", new Point(0, 0), 10, Color.Black));
-      elements.Add(new Button("Click me", new Point(0, 100), 10, Color.Black, 100, 30,
+      elements.Add(new Label("Hi Ahmed!", new Point(0, 0), 10, Color.White));
+      elements.Add(new Button("Click me", new Point(0, 100), 10, Color.White, 100, 30,
                                                   () => {
                                                     elements = new List<GuiElement>();
                                                     elements.Add(new Button("Exit", new Point(0, 0), 10, Color.Black, 100, 30,

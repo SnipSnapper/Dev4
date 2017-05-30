@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace GUIapp
 {
   public class Game1 : Game
-  {
+    { 
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
 
@@ -45,14 +46,16 @@ namespace GUIapp
 
     protected override void Draw(GameTime gameTime)
     {
-      GraphicsDevice.Clear(Color.Black);
 
-      spriteBatch.Begin();
-      GuiManager.Draw(DrawVisitor);
-      
-      spriteBatch.End();
+        GraphicsDevice.Clear(Color.Black);
 
-      base.Draw(gameTime);
+        spriteBatch.Begin();
+        GuiManager.Draw(DrawVisitor);
+
+
+            spriteBatch.End();
+
+        base.Draw(gameTime);
     }
   }
 }

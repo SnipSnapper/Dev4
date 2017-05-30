@@ -80,12 +80,15 @@ namespace GUIapp
         {
           this.sprite_batch = sprite_batch;
           this.content_manager = content_manager;
-          white_pixel = content_manager.Load<Texture2D>("white_pixel");
+          white_pixel = content_manager.Load<Texture2D>("donald");
           default_font = content_manager.Load<SpriteFont>("arial");
         }   
     public void DrawButton(Button element)
         {
-            
+            ;
+            sprite_batch.Draw(white_pixel, new Vector2(element.top_left_corner.X, element.top_left_corner.Y), Color.Red);
+            element.label.Draw(this);
+
         }
     public void DrawLabel(Label element)
         {
@@ -93,8 +96,12 @@ namespace GUIapp
         }
     public void DrawGui(GuiManager gui_manager)
         {
-
-          //MISSING CODE HERE
+            int listcount = gui_manager.elements.Count;
+            for (int i = 0; i < listcount; i++)
+            {
+                GuiElement element = gui_manager.elements[i];
+                element.Draw(this);
+            }
         }
   }
 
@@ -106,18 +113,18 @@ namespace GUIapp
 
   public class DefaultUpdateVisitor : UpdateVisitor
   {
-    public void UpdateButton(Button element, float dt)
+    /*public void UpdateButton(Button element, float dt)
     {
       var mouse = Mouse.GetState();
       //MISSING CODE HERE
-      {
+      
         //MISSING CODE HERE
-      }
+      
       else
       {
         element.color = Color.White;
       }
-    }
+    }*/
     public void UpdateLabel(Label element, float dt) {
       
     }
